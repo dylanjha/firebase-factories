@@ -45,7 +45,7 @@ const UserFactory = factories.define('User', {
 * These new objects will get saved to firebase with whatever you return from the `attributes` function in the factory definition.
 * There will be two other properties attached to these saved records:
   - `$id`: the id of the object
-  - `$loaded`: a function that returns a promise that resolves after the record is saved and the afterSave() callback is completed
+  - `$save`: a function that returns a promise that resolves after the record is saved and the afterSave() callback is completed
 
 
 ```javascript
@@ -54,9 +54,9 @@ const userAdmin = UserFactory.create({}, {isAdmin: true})
 const userJane = UserFactory.create({info: {name: 'Jane'}})
 
 Promise.all([
-  userRegular.$loaded(), 
-  userAdmin.$loaded(), 
-  userJane.$loaded(), 
+  userRegular.$save(), 
+  userAdmin.$save(), 
+  userJane.$save(), 
 ]).then((values) => {
   console.log('All the users have been saved')
   console.log(userRegular.$id, userRegular.info.name)

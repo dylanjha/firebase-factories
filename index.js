@@ -46,7 +46,7 @@ module.exports = (config) => {
       const record = _.merge(base, overrides)
       const resource = _.clone(record)
       resource.$id = this.id(count, options)
-      resource.$loaded = () => {
+      resource.$save = () => {
         return this.rootRef.child(resource.$id).set(record).then(() => {
           return this.afterSave(count, options, resource)
         })
