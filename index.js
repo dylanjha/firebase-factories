@@ -1,7 +1,4 @@
-/**
-  See README.md
-*/
-
+'use strict'
 const _ = require('lodash')
 // keep track of fixtures that have been defined
 let DEF = {}

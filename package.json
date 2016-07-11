@@ -1,6 +1,6 @@
 {
   "name": "firebase-factories",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Factories for creating test data and saving it to firebase",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/dylanjha/firebase-factories#readme",
   "dependencies": {
-    "lodash": "4.13.1"
+    "lodash": "^4.13.1"
   },
   "scripts": {
     "test": "echo 'Write Some Tests'"
