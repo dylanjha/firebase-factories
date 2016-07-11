@@ -1,0 +1,28 @@
+{
+  "name": "firebase-factories",
+  "version": "0.0.1",
+  "description": "Factories for creating test data and saving it to firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylanjha/firebase-factories.git"
+  },
+  "keywords": [
+    "firebase",
+    "fixtures",
+    "factories",
+    "testing"
+  ],
+  "author": "Dylan Jhaveri <dylanjhaveri@gmail.com> (https://www.twitter.com/dylanjha)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylanjha/firebase-factories/issues"
+  },
+  "homepage": "https://github.com/dylanjha/firebase-factories#readme",
+  "dependencies": {
+    "lodash": "4.13.1"
+  }
+}
