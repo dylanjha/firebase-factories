@@ -64,3 +64,8 @@ Promise.all([
   console.log(userJane.$id, userJane.info.name)
 })
 ```
+
+## TODO
+
+* tests (use firebase-server to create tests)
+* js standard
