@@ -1,30 +1,5 @@
 /**
- *
- * Create fixture data and load it into a firebase database
- *   initialize with config object:
- *      {
- *        firebase: <firebase-ref> (the root of your firebase)
- *      }
- *
- *   Exports one global object:
- *     {
- *        // define a new factory
- *        define: function () {}
- *        // clear out all saved factories from the database
- *        reset: function () { }
- *     }
- *
- *    Example usage:
- *      const factories = require('firebase-factories')
- *      const UserFactory = factores.create('User', {
- *        defaults: (n, options) => { return {info: name: `User ${n}`}},
- *        root: 'users',
- *        afterSave: (n, options, record) => { }
- *      })
- *
- *      const user1 = UserFactory.create({}, {isAdmin: true})
- *      user1.$loaded() is a promise that will be fulfilled when
- *                      the afterSave callback is complete
+  See README.md
 */
 
 const _ = require('lodash')
@@ -53,7 +28,7 @@ module.exports = (config) => {
       this.id = options.id // function
       this.root = options.root
       this.rootRef = firebase.child(this.root)
-      this.defaults = options.defaults // function
+      this.attributes = options.attributes // function
       this.afterSave = options.afterSave // function
     }
 
@@ -67,17 +42,16 @@ module.exports = (config) => {
       const count = COUNT[this.name] += 1
       overrides = overrides || {}
       options = options || {}
-      const id = this.id(count, options)
-      const base = this.defaults(count, options)
+      const base = this.attributes(count, options)
       const record = _.merge(base, overrides)
-      const fixture = _.clone(record)
-      fixture.id = id
-      fixture.$loaded = () => {
-        return this.rootRef.child(id).set(record).then(() => {
-          return this.afterSave(fixture)
+      const resource = _.clone(record)
+      resource.$id = this.id(count, options)
+      resource.$loaded = () => {
+        return this.rootRef.child(resource.$id).set(record).then(() => {
+          return this.afterSave(count, options, resource)
         })
       }
-      return fixture
+      return resource
     }
   }
 
