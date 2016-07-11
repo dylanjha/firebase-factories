@@ -24,5 +24,8 @@
   "homepage": "https://github.com/dylanjha/firebase-factories#readme",
   "dependencies": {
     "lodash": "4.13.1"
+  },
+  "scripts": {
+    "test": "echo 'Write Some Tests'"
   }
 }
