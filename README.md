@@ -6,7 +6,6 @@ Define factories for your models and use the factory to save data to your fireba
 
 1. Define a factory with `factories.define`
 2. Use this factory definition to create and save new data to firebase
-3. 
 
 ## factories.define
 
