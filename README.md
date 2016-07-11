@@ -4,6 +4,12 @@ Define factories for your models and use the factory to save data to your fireba
 
 # Example
 
+1. Define a factory with `factories.define`
+2. Use this factory definition to create and save new data to firebase
+3. 
+
+## factories.define
+
 ```javascript
 const factories = require('firebase-factories')({firebase: new Firebase(<my-firebase-root>)})
 
@@ -31,15 +37,19 @@ const UserFactory = factories.define('User', {
     return firebase.child(`uids/${user.info.uid}`).set(user.$id)
   }
 })
+```
 
-//
-// These user objects created by the UserFactory.create function
-// These users all have:
-//  * `$id`: property which is the id at /users/<id>
-//  * `$loaded`: function that returns a promise that will be resolved
-//           when the record is saved and the afterSave() callback is complete
-//  * all the properties that were returned by `attributes`
-//
+## Create and save data
+* Use the `Factory.create(overrides = {}, options = {})` method on your factory definition
+  - `overrides` is an object that will override the default `attributes` from your factory definition
+  - `options` is an object that will get passed into the `attributes` function. See example usage for creating regular users vs. creating admin users.
+* These new objects will get saved to firebase with whatever you return from the `attributes` function in the factory definition.
+* There will be two other properties attached to these saved records:
+  - `$id`: the id of the object
+  - `$loaded`: a function that returns a promise that resolves after the record is saved and the afterSave() callback is completed
+
+
+```javascript
 const userRegular = UserFactory.create()
 const userAdmin = UserFactory.create({}, {isAdmin: true})
 const userJane = UserFactory.create({info: {name: 'Jane'}})
@@ -54,3 +64,4 @@ Promise.all([
   console.log(userAdmin.$id, userAdmin.info.name)
   console.log(userJane.$id, userJane.info.name)
 })
+```
