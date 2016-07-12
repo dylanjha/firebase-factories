@@ -4,7 +4,7 @@
   "description": "Factories for creating test data and saving it to firebase",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "standard && NODE_ENV=test jasmine"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,10 @@
   "dependencies": {
     "lodash": "^4.13.1"
   },
-  "scripts": {
-    "test": "echo 'Write Some Tests'"
+  "devDependencies": {
+    "firebase": "^2.4.0",
+    "firebase-server": "0.5.4",
+    "jasmine": "^2.4.1",
+    "standard": "*"
   }
 }

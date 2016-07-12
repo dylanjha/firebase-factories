@@ -19,7 +19,7 @@ const UserFactory = factories.define('User', {
   // newly generated users n is a number that gets incremented with every factory
   // of this type that gets created
   id: (n, options) => {
-    return `test-user-${id}`
+    return `test-user-${n}`
   },
   // provide a function that returns an object which will be used as the user record
   attributes: (n, options) => {
@@ -65,7 +65,10 @@ Promise.all([
 })
 ```
 
-## TODO
+## Contributing
 
-* tests (use firebase-server to create tests)
-* js standard
+* This project uses [Standard JS](http://standardjs.com/)
+* This project uses [Firebase Server](https://github.com/urish/firebase-server)
+* Add this line `127.0.0.1 localhost.firebaseio.test` to /etc/hosts on your local machine. Firebase server needs this hostname to point to localhost
+* `npm install`
+* `npm test`

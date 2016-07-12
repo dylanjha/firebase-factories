@@ -1,0 +1,7 @@
+machine:
+  environment:
+    NODE_ENV: test
+  hosts:
+    localhost.firebaseio.test: 127.0.0.1
+  node:
+    version: 4.4.4
